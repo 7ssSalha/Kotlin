@@ -3,7 +3,19 @@ package concepts.types
 fun printTypeAndValue(obj:Any?){
     println("variable type: ${obj?.javaClass} variable value: $obj")
 }
-
+fun checkString(str:Any?){
+    if (str !is String) {
+        print("$str is not a string\n")
+    } else {
+        print("yes $str is a string and it's length=${str.length}\n")
+    }
+}
+fun checkStringUsingWhen(str: Any?){
+    when(str){
+        !is String -> print("$str is not a string\n")
+        else      -> print("yes $str is a string and it's length=${str.length}\n")
+    }
+}
 fun main(){
 
     //Numbers - Integer types
@@ -118,6 +130,14 @@ fun main(){
     println()
     array = IntArray(10){(it+1)*(it+1)}
     array.forEach { print("$it ") }
+
+    //is and !is operators
+    println()
+    checkString("hello")
+    val flag:Boolean = true
+    checkString(flag)
+    checkStringUsingWhen(!flag)
+    checkStringUsingWhen("HelloHello")
 }
 
 
